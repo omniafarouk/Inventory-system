@@ -1,7 +1,9 @@
 package Admin;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -23,8 +25,8 @@ public class EmployeeUserDatabase {
             String line;
             
             while((line = reader.readLine())!=null)
-                {  
-                    //System.out.println(line);
+                {   System.out.println("new");
+                    System.out.println(line);
                     records.add( createRecordFrom(line) );
                     
                 }    
@@ -79,7 +81,15 @@ public class EmployeeUserDatabase {
     }
     
     public void saveToFile(){
-        
+        try {      
+                BufferedWriter writer = new BufferedWriter (new FileWriter(filename));
+                for (EmployeeUser record : this.records) {
+                    writer.write(record.lineRepresentation() + "\n");
+            }
+                writer.close();
+          } catch (IOException ex) {    
+            System.out.println("An error occurred!");
+       }
     }
     
 }
