@@ -9,6 +9,7 @@ import java.io.IOException;*/
 import java.io.*;
 import java.util.ArrayList;
 import java.time.*;
+import java.time.format.*;
 
 public class customerProductDatabase {
 
@@ -44,7 +45,8 @@ public class customerProductDatabase {
         
         //System.out.println("Create record from method called!");
         String[] lineData = line.split(",");
-        return new customerProduct( lineData[0], lineData[1], LocalDate.parse(lineData[2]) );
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("DD-MMM-YYYY");
+        return new customerProduct( lineData[0], lineData[1], LocalDate.parse( lineData[2] , formatter) );
         
     }
     
