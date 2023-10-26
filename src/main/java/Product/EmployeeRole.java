@@ -84,7 +84,7 @@ public class EmployeeRole {
         Product modifiedProduct = new Product( lineData[0], lineData[1], lineData[2],
                                                  lineData[3] ,(Integer.parseInt(lineData[4])+1),
                                                     Float.parseFloat(lineData[5]));
-       customerProductData.deleteRecord(productID);  //kda 7ims7 kol ele4tro rlproduct??
+       customerProductData.deleteRecord(productID);  
        productData.deleteRecord(productID);
        productData.insertRecord(modifiedProduct);
        productData.saveToFile();
