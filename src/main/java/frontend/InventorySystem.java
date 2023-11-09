@@ -4,6 +4,7 @@ public class InventorySystem extends javax.swing.JFrame implements Node{
 
     private Node parent;
     public Navigation systemNavigation;
+    
     public InventorySystem() {
         initComponents();
         this.setTitle("Inventory System");
@@ -68,7 +69,9 @@ public class InventorySystem extends javax.swing.JFrame implements Node{
     }// </editor-fold>//GEN-END:initComponents
 
     private void employeeRoleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeRoleButtonActionPerformed
-        // TODO add your handling code here:
+        EmployeeLogin employeeLoginWindow = new EmployeeLogin(systemNavigation, this); //send this as parent to adminLoginWindow
+       
+        systemNavigation.setNavigation(employeeLoginWindow, this);
     }//GEN-LAST:event_employeeRoleButtonActionPerformed
 
     private void adminRoleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminRoleButtonActionPerformed

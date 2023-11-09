@@ -53,35 +53,35 @@ public class AddEmployee extends javax.swing.JFrame implements Node{
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         emailLabel.setBackground(new java.awt.Color(0, 255, 102));
-        emailLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        emailLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         emailLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         emailLabel.setText("Email");
         emailLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         emailLabel.setOpaque(true);
 
         phoneNumberLabel.setBackground(new java.awt.Color(0, 255, 102));
-        phoneNumberLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        phoneNumberLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         phoneNumberLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         phoneNumberLabel.setText("Phone Number");
         phoneNumberLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         phoneNumberLabel.setOpaque(true);
 
         addressLabel.setBackground(new java.awt.Color(0, 255, 102));
-        addressLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        addressLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         addressLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         addressLabel.setText("Address");
         addressLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         addressLabel.setOpaque(true);
 
         nameLabel.setBackground(new java.awt.Color(0, 255, 102));
-        nameLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        nameLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nameLabel.setText("Name");
         nameLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         nameLabel.setOpaque(true);
 
         employeeIdLabel.setBackground(new java.awt.Color(0, 255, 102));
-        employeeIdLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        employeeIdLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         employeeIdLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         employeeIdLabel.setText("Employee ID");
         employeeIdLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -155,9 +155,11 @@ public class AddEmployee extends javax.swing.JFrame implements Node{
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {addressLabel, addressTextField, emailLabel, emailTextField, employeeIdLabel, employeeIdTextField, nameLabel, nameTextField, phoneNumberLabel, phoneNumberTextField});
 
-        addButton.setBackground(new java.awt.Color(0, 0, 0));
+        addButton.setBackground(new java.awt.Color(51, 51, 51));
+        addButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         addButton.setForeground(new java.awt.Color(255, 255, 255));
         addButton.setText("Add");
+        addButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 153), 3, true));
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);

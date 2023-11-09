@@ -54,11 +54,6 @@ abstract class Database
         
         return getRecord(key) != null;
     }
-    /* public String[] createRecordFrom(String line)
-    {
-        String[] lineData = line.split(","); 
-        return lineData;
-    }*/
     public void insertRecord (Account record){
         records.add(record);
     }

@@ -105,14 +105,14 @@ public class RemoveEmployee extends javax.swing.JFrame implements Node{
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
         String employeeId = employeeIdTextField.getText();
         if(employeeId.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please enter an ID!");
+            JOptionPane.showMessageDialog(null, "Please enter an ID!");   // why some like this and other JPanel new windows are created?
         }
         else{
            EmployeeUser[] employeeUsers = admin.getListOfEmployees();
            for (EmployeeUser employeeUser : employeeUsers) {
                if(employeeUser.getSearchKey().equals(employeeId)){
                    admin.removeEmployee(employeeId);
-                   employeeIdTextField.setText("");
+                   employeeIdTextField.setText("");     // what does that do?
                    JOptionPane.showMessageDialog(null, "The Employee with id = " + employeeId + " has been deleted.");
                    return;  
                }

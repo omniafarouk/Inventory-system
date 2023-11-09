@@ -73,6 +73,12 @@ public class AdminLogin extends javax.swing.JFrame implements Node, LoginCredent
         passwordLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         passwordLabel.setOpaque(true);
 
+        usernameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameTextFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -161,6 +167,10 @@ public class AdminLogin extends javax.swing.JFrame implements Node, LoginCredent
 //        ((JFrame)this.getParentNode()).setVisible(true);
         windowNavigation.setNavigation((JFrame)this.getParentNode(), this);
     }//GEN-LAST:event_formWindowClosing
+
+    private void usernameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameTextFieldActionPerformed
 
     /**
      * @param args the command line arguments

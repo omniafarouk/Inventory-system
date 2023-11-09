@@ -8,10 +8,7 @@ import backend.EmployeeUser;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Eng.Ashraf
- */
+
 public class ViewEmployees extends javax.swing.JFrame implements Node{
     
     private Navigation windowNavigation;

@@ -9,6 +9,7 @@ public class AdminRoleWindow extends javax.swing.JFrame implements Node{
     private Node parent;
     AdminRole admin;
     private Navigation windowNavigation;
+    
     public AdminRoleWindow(Navigation systemNavigation, Node parent) {
         
         initComponents(); 
@@ -163,6 +164,7 @@ public class AdminRoleWindow extends javax.swing.JFrame implements Node{
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AdminRoleWindow(null,null).setVisible(true);
             }

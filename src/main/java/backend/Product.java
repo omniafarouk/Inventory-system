@@ -10,7 +10,7 @@ public class Product implements Account {
 public Product(String productID, String productName
           , String manufacturerName, String supplierName, int quantity, float price)
   {   
-      this.productID = productID;           //need validation for the id product to be different !!
+      this.productID = productID;           
       this.productName = productName;
       this.manufacturerName = manufacturerName;
       this.supplierName = supplierName;

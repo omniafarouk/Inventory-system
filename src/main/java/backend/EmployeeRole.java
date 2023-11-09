@@ -40,7 +40,7 @@ public class EmployeeRole implements FileNames{
         return (Product[])listOfProducts;
     }
     
-     public CustomerProduct[] getListOfPurchasingOperations(){
+    public CustomerProduct[] getListOfPurchasingOperations(){
 
         Account[] listOfPurchasingOperations = new CustomerProduct[ customerProductDatabase.returnAllRecords().size()];
         listOfPurchasingOperations = customerProductDatabase.returnAllRecords().toArray(listOfPurchasingOperations);

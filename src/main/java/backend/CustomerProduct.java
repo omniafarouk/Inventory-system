@@ -2,7 +2,7 @@ package backend;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
-class CustomerProduct implements Account{
+    public class CustomerProduct implements Account{
     
     private String customerSSN , productID;
     private LocalDate purchaseDate;
