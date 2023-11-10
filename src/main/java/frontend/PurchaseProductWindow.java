@@ -1,6 +1,7 @@
 package frontend;
 
 import backend.EmployeeRole;
+import backend.Product;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -168,11 +169,8 @@ public class PurchaseProductWindow extends javax.swing.JFrame implements Node {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
         //LocalDate date = LocalDate.parse((CharSequence) PurchaseDate, formatter);
         SimpleDateFormat date=new SimpleDateFormat("dd-M-yyyy");
-        //date.format(PurchaseDate);
         
         // to find if product avaliable at all
-        // boolean productExists=false;
-        
         if(CustomerSSN.isEmpty() || ProductId.isEmpty())
         {
             JPanel Empty = new JPanel();
@@ -184,38 +182,22 @@ public class PurchaseProductWindow extends javax.swing.JFrame implements Node {
                 jTextFieldProductId.setText("");
                 jDateChooserPurchaseDate.setDate(null);   
                 JOptionPane.showMessageDialog(null, "The customer with SSN = "+ CustomerSSN +" has successfully purchased the product with id = " + ProductId);
+                }
+            else { 
+            Product[] products=employee.getListOfProducts();
+            for (Product product: products) {
+                 if(product.getSearchKey().equals(ProductId))
+                 {  
+                        if(product.getQuantity()<=0)
+                          {
+                            JOptionPane.showMessageDialog(null, "All items of the product with id " +ProductId +" is soldout!");
+                            return;
+                          }
+                 }
+             }
+          JOptionPane.showMessageDialog(null, "Invalid Puchase process","Failure!",JOptionPane.ERROR_MESSAGE);
             }
-            else{
-                    
-                JOptionPane.showMessageDialog(null, "All items of the product with id = " + ProductId +" have been finished and no item is left for the customer");
-            }
-        }
-//            Product[] products=employee.getListOfProducts();
-//            for (Product product: products) {
-//                 if(product.getSearchKey().equals(ProductId))
-//                 {  productExists=true;
-//                        if(product.getQuantity()<=0)
-//                          {
-//                            JPanel soldout = new JPanel();
-//                            JOptionPane.showMessageDialog(soldout, "All items of the product with id " +ProductId +"is soldout!");
-//                             return;
-//                          }
-//                 }
-//             }
-//        }
-//        if(productExists)
-//        {
-//        employee.purchaseProduct(CustomerSSN, ProductId, LocalDate.parse(date.format(PurchaseDate), formatter));
-//        JOptionPane.showMessageDialog(null, "The customer with SSN "+CustomerSSN +" has successfully purchased the product with id " +ProductId);
-//        }
-//        else
-//        {
-//            JOptionPane.showMessageDialog(null, "Product " +ProductId + " Inavaliable");
-//        }   //validate CustomerSSN also??
-//        
-//        EmployeeRoleWindow EmployeeRoleWindow= new EmployeeRoleWindow(this.windowNavigation,this.parent);
-//        
-//        this.windowNavigation.setNavigation(EmployeeRoleWindow, this);
+        }  
     }//GEN-LAST:event_PurchaseButtonActionPerformed
 
     private void jDateChooserPurchaseDateAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jDateChooserPurchaseDateAncestorAdded

@@ -2,4 +2,5 @@ EMP-002,Mohamed,mohamed@email.com,456 Boulevard Giza,+20198765432
 EMP-003,Mariam,mariam@email.com,789 Avenue Alexandria,+20145678923
 EMP-004,Hossam,hossam@email.com,101 Lane Luxor,+20132165498
 EMP-005,Nour,nour@email.com,202 Drive Aswan,+20165432178
-scsc ,mlcm,dlmc,dml,ml
+7977,omnia,omnia@gmail.com,alex,+20100120013
+8404,Mayar,mayar@gmail.com,alex,155026690
