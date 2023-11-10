@@ -200,7 +200,6 @@ public class ReturnProductWindow extends javax.swing.JFrame implements Node {
            jDateChooserReturnDate.setDate(null);
           
             JOptionPane.showMessageDialog(null, "The customer with SSN = "+ CustomerSSN +" should be paid the price of the returned product");
-            windowNavigation.setNavigation((JFrame)parent, this);
           }else{
             JOptionPane.showMessageDialog(null, "Invalid Return process!","Failure!",JOptionPane.ERROR_MESSAGE);
           }

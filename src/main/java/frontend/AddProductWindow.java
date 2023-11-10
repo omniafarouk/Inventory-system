@@ -261,7 +261,7 @@ public class AddProductWindow extends javax.swing.JFrame implements Node {
         if ( ProductId.isEmpty() || ProductName.isEmpty() || SupplierName.isEmpty() || ManufacturerName.isEmpty() || Quantity.isEmpty() || Price.isEmpty() )
         {
             JPanel Empty =new JPanel();
-            JOptionPane.showMessageDialog(Empty, " Some fields are empty ","ALert!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(Empty, " Some fields are empty ","Alert!", JOptionPane.ERROR_MESSAGE);
             return;
         }
         else {

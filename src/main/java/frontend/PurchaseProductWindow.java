@@ -170,7 +170,7 @@ public class PurchaseProductWindow extends javax.swing.JFrame implements Node {
         //LocalDate date = LocalDate.parse((CharSequence) PurchaseDate, formatter);
         SimpleDateFormat date=new SimpleDateFormat("dd-M-yyyy");
         
-        // to find if product avaliable at all
+      
         if(CustomerSSN.isEmpty() || ProductId.isEmpty())
         {
             JPanel Empty = new JPanel();
@@ -184,18 +184,18 @@ public class PurchaseProductWindow extends javax.swing.JFrame implements Node {
                 JOptionPane.showMessageDialog(null, "The customer with SSN = "+ CustomerSSN +" has successfully purchased the product with id = " + ProductId);
                 }
             else { 
-            Product[] products=employee.getListOfProducts();
-            for (Product product: products) {
-                 if(product.getSearchKey().equals(ProductId))
-                 {  
-                        if(product.getQuantity()<=0)
-                          {
-                            JOptionPane.showMessageDialog(null, "All items of the product with id " +ProductId +" is soldout!");
-                            return;
-                          }
-                 }
+                Product[] products=employee.getListOfProducts();
+                for (Product product: products) {
+                     if(product.getSearchKey().equals(ProductId))
+                     {  
+                            if(product.getQuantity()<=0)
+                              {
+                                JOptionPane.showMessageDialog(null, "All items of the product with id = " + ProductId +" have finished and no items left for the customer.");
+                                return;
+                              }
+                     }
              }
-          JOptionPane.showMessageDialog(null, "Invalid Puchase process","Failure!",JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(null, "Invalid Puchase process!","Failure!",JOptionPane.ERROR_MESSAGE);
             }
         }  
     }//GEN-LAST:event_PurchaseButtonActionPerformed
