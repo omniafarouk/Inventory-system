@@ -1,12 +1,11 @@
-
 package frontend;
 
 import backend.EmployeeRole;
-import backend.Product;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -18,14 +17,14 @@ public class PurchaseProductWindow extends javax.swing.JFrame implements Node {
 
    private Navigation windowNavigation;
    private Node parent;
-   EmployeeRole employee;
+   private EmployeeRole employee;
    
-    public PurchaseProductWindow(Navigation windowNavigation , Node parent) {
+    public PurchaseProductWindow(Navigation windowNavigation , Node parent, EmployeeRole employee) {
         initComponents();
-        this.parent=parent;
-        this.windowNavigation=windowNavigation;
+        this.parent = parent;
+        this.windowNavigation = windowNavigation;
         this.setTitle("Purchase Product");
-        employee = new EmployeeRole();
+        this.employee = employee;
         
     }
 
@@ -43,30 +42,35 @@ public class PurchaseProductWindow extends javax.swing.JFrame implements Node {
         jLabelProductId = new javax.swing.JLabel();
         jLabelPurchaseDate = new javax.swing.JLabel();
         jTextFieldCustomerSSN = new javax.swing.JTextField();
-        jDateChooserPurchaseDate = new com.toedter.calendar.JDateChooser();
         jTextFieldProductId = new javax.swing.JTextField();
+        jDateChooserPurchaseDate = new com.toedter.calendar.JDateChooser();
         PurchaseButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabelCustomerSSN.setBackground(new java.awt.Color(0, 255, 51));
-        jLabelCustomerSSN.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabelCustomerSSN.setBackground(new java.awt.Color(0, 255, 102));
+        jLabelCustomerSSN.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabelCustomerSSN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelCustomerSSN.setText("CustomerSSN");
         jLabelCustomerSSN.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabelCustomerSSN.setOpaque(true);
 
-        jLabelProductId.setBackground(new java.awt.Color(0, 255, 51));
-        jLabelProductId.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabelProductId.setBackground(new java.awt.Color(0, 255, 102));
+        jLabelProductId.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabelProductId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelProductId.setText("ProductID");
         jLabelProductId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabelProductId.setOpaque(true);
 
-        jLabelPurchaseDate.setBackground(new java.awt.Color(0, 255, 51));
-        jLabelPurchaseDate.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabelPurchaseDate.setBackground(new java.awt.Color(0, 255, 102));
+        jLabelPurchaseDate.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabelPurchaseDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPurchaseDate.setText("Purchase Date");
         jLabelPurchaseDate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -78,16 +82,6 @@ public class PurchaseProductWindow extends javax.swing.JFrame implements Node {
             }
         });
 
-        jDateChooserPurchaseDate.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jDateChooserPurchaseDateAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -96,35 +90,34 @@ public class PurchaseProductWindow extends javax.swing.JFrame implements Node {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelProductId, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldProductId))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelCustomerSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldCustomerSSN))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelProductId, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldProductId)
-                            .addComponent(jDateChooserPurchaseDate, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))))
+                        .addComponent(jLabelPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooserPurchaseDate, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCustomerSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCustomerSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelProductId, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldProductId, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jDateChooserPurchaseDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelPurchaseDate, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(jLabelCustomerSSN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldCustomerSSN, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelProductId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldProductId, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelPurchaseDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDateChooserPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         PurchaseButton.setBackground(new java.awt.Color(51, 51, 51));
@@ -143,22 +136,20 @@ public class PurchaseProductWindow extends javax.swing.JFrame implements Node {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PurchaseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(PurchaseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(PurchaseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -180,7 +171,7 @@ public class PurchaseProductWindow extends javax.swing.JFrame implements Node {
         //date.format(PurchaseDate);
         
         // to find if product avaliable at all
-        boolean productExists=false;
+        // boolean productExists=false;
         
         if(CustomerSSN.isEmpty() || ProductId.isEmpty())
         {
@@ -188,37 +179,52 @@ public class PurchaseProductWindow extends javax.swing.JFrame implements Node {
             JOptionPane.showMessageDialog(Empty , "Some fields are empty ", "Alert!", JOptionPane.ERROR_MESSAGE);
         }
         else 
-        { Product[] products=employee.getListOfProducts();
-            for (Product product: products) {
-                 if(product.getSearchKey().equals(ProductId))
-                 {  productExists=true;
-                        if(product.getQuantity()<=0)
-                          {
-                            JPanel soldout = new JPanel();
-                            JOptionPane.showMessageDialog(soldout, "All items of the product with id " +ProductId +"is soldout!");
-                             return;
-                          }
-                 }
-             }
+        {  if(employee.purchaseProduct(CustomerSSN, ProductId, LocalDate.parse(date.format(PurchaseDate), formatter))){
+                jTextFieldCustomerSSN.setText("");
+                jTextFieldProductId.setText("");
+                jDateChooserPurchaseDate.setDate(null);   
+                JOptionPane.showMessageDialog(null, "The customer with SSN = "+ CustomerSSN +" has successfully purchased the product with id = " + ProductId);
+            }
+            else{
+                    
+                JOptionPane.showMessageDialog(null, "All items of the product with id = " + ProductId +" have been finished and no item is left for the customer");
+            }
         }
-        if(productExists)
-        {
-        employee.purchaseProduct(CustomerSSN, ProductId, LocalDate.parse(date.format(PurchaseDate), formatter));
-        JOptionPane.showMessageDialog(null, "The customer with SSN "+CustomerSSN +" has successfully purchased the product with id " +ProductId);
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Product " +ProductId + " Inavaliable");
-        }   //validate CustomerSSN also??
-        
-        EmployeeRoleWindow EmployeeRoleWindow= new EmployeeRoleWindow(this.windowNavigation,this.parent);
-        
-        this.windowNavigation.setNavigation(EmployeeRoleWindow, this);
+//            Product[] products=employee.getListOfProducts();
+//            for (Product product: products) {
+//                 if(product.getSearchKey().equals(ProductId))
+//                 {  productExists=true;
+//                        if(product.getQuantity()<=0)
+//                          {
+//                            JPanel soldout = new JPanel();
+//                            JOptionPane.showMessageDialog(soldout, "All items of the product with id " +ProductId +"is soldout!");
+//                             return;
+//                          }
+//                 }
+//             }
+//        }
+//        if(productExists)
+//        {
+//        employee.purchaseProduct(CustomerSSN, ProductId, LocalDate.parse(date.format(PurchaseDate), formatter));
+//        JOptionPane.showMessageDialog(null, "The customer with SSN "+CustomerSSN +" has successfully purchased the product with id " +ProductId);
+//        }
+//        else
+//        {
+//            JOptionPane.showMessageDialog(null, "Product " +ProductId + " Inavaliable");
+//        }   //validate CustomerSSN also??
+//        
+//        EmployeeRoleWindow EmployeeRoleWindow= new EmployeeRoleWindow(this.windowNavigation,this.parent);
+//        
+//        this.windowNavigation.setNavigation(EmployeeRoleWindow, this);
     }//GEN-LAST:event_PurchaseButtonActionPerformed
 
     private void jDateChooserPurchaseDateAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jDateChooserPurchaseDateAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jDateChooserPurchaseDateAncestorAdded
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        windowNavigation.setNavigation((JFrame)this.getParentNode(), this);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -251,7 +257,7 @@ public class PurchaseProductWindow extends javax.swing.JFrame implements Node {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new PurchaseProductWindow(null,null).setVisible(true);
+                new PurchaseProductWindow(null,null,null).setVisible(true);
             }
         });
     }

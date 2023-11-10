@@ -1,7 +1,6 @@
 package frontend;
 
 import constants.LoginCredentials;
-import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -15,10 +14,8 @@ public class AdminLogin extends javax.swing.JFrame implements Node, LoginCredent
     public AdminLogin(Navigation systemNavigation, Node parent) {
         initComponents();
         this.parent = parent;
-         this.setTitle("Admin Login");
-        this.windowNavigation = systemNavigation;
-       
-        
+        this.setTitle("Admin Login");
+        this.windowNavigation = systemNavigation; 
     }
 
     /**
@@ -60,14 +57,14 @@ public class AdminLogin extends javax.swing.JFrame implements Node, LoginCredent
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         usernameLabel.setBackground(new java.awt.Color(0, 255, 102));
-        usernameLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        usernameLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         usernameLabel.setText("Username");
         usernameLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         usernameLabel.setOpaque(true);
 
         passwordLabel.setBackground(new java.awt.Color(0, 255, 102));
-        passwordLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        passwordLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         passwordLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         passwordLabel.setText("Password");
         passwordLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -127,7 +124,7 @@ public class AdminLogin extends javax.swing.JFrame implements Node, LoginCredent
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,8 +147,6 @@ public class AdminLogin extends javax.swing.JFrame implements Node, LoginCredent
         }else if(username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD) ){
             
            AdminRoleWindow adminRoleWindow = new AdminRoleWindow(windowNavigation, this.parent);
-//           this.setVisible(false);
-//           adminRoleWindow.setVisible(true);
            windowNavigation.setNavigation(adminRoleWindow, this);
             
         }else{   

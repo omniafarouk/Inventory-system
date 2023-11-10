@@ -38,6 +38,7 @@ public class AdminRoleWindow extends javax.swing.JFrame implements Node{
         setBackground(new java.awt.Color(204, 204, 204));
 
         addEmployeeButton.setBackground(new java.awt.Color(0, 0, 0));
+        addEmployeeButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         addEmployeeButton.setForeground(new java.awt.Color(255, 255, 255));
         addEmployeeButton.setText("Add Employee");
         addEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -47,6 +48,7 @@ public class AdminRoleWindow extends javax.swing.JFrame implements Node{
         });
 
         viewEmployeesButton.setBackground(new java.awt.Color(0, 0, 0));
+        viewEmployeesButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         viewEmployeesButton.setForeground(new java.awt.Color(255, 255, 255));
         viewEmployeesButton.setText("View Employees");
         viewEmployeesButton.addActionListener(new java.awt.event.ActionListener() {
@@ -56,6 +58,7 @@ public class AdminRoleWindow extends javax.swing.JFrame implements Node{
         });
 
         removeEmployeeButton.setBackground(new java.awt.Color(0, 0, 0));
+        removeEmployeeButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         removeEmployeeButton.setForeground(new java.awt.Color(255, 255, 255));
         removeEmployeeButton.setText("Remove Employee");
         removeEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +68,7 @@ public class AdminRoleWindow extends javax.swing.JFrame implements Node{
         });
 
         logoutButton.setBackground(new java.awt.Color(0, 0, 0));
+        logoutButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         logoutButton.setForeground(new java.awt.Color(255, 255, 255));
         logoutButton.setText("Logout");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {

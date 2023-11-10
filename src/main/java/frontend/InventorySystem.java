@@ -27,6 +27,7 @@ public class InventorySystem extends javax.swing.JFrame implements Node{
         setBackground(new java.awt.Color(204, 204, 204));
 
         adminRoleButton.setBackground(new java.awt.Color(0, 0, 0));
+        adminRoleButton.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         adminRoleButton.setForeground(new java.awt.Color(255, 255, 255));
         adminRoleButton.setText("Admin Role");
         adminRoleButton.addActionListener(new java.awt.event.ActionListener() {
@@ -36,6 +37,7 @@ public class InventorySystem extends javax.swing.JFrame implements Node{
         });
 
         employeeRoleButton.setBackground(new java.awt.Color(0, 0, 0));
+        employeeRoleButton.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         employeeRoleButton.setForeground(new java.awt.Color(255, 255, 255));
         employeeRoleButton.setText("Emloyee Role");
         employeeRoleButton.addActionListener(new java.awt.event.ActionListener() {

@@ -57,7 +57,7 @@ public class RemoveEmployee extends javax.swing.JFrame implements Node{
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         employeeIdLabel.setBackground(new java.awt.Color(0, 255, 102));
-        employeeIdLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        employeeIdLabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         employeeIdLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         employeeIdLabel.setText("Employee ID");
         employeeIdLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));

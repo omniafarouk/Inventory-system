@@ -1,11 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package frontend;
 
 import backend.Product;
-import java.awt.List;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -29,9 +25,9 @@ public class ViewProducts extends javax.swing.JFrame implements Node {
          String[][] tableData = new String[Products.length][6];
         for(int i = 0 ;i <Products.length ; i++)
             {
-         tableData[i] = Products[i].lineRepresentation().split(",");
+                 tableData[i] = Products[i].lineRepresentation().split(",");
              }
-         ProductsTable.setModel(new DefaultTableModel (tableData,new String[] {"Product ID","Product Name","Manufacturer Name","Supplier Name","Quantity","Price $"}){
+        ProductsTable.setModel(new DefaultTableModel (tableData,new String[] {"Product ID","Product Name","Manufacturer Name","Supplier Name","Quantity","Price $"}){
         @Override
         public boolean isCellEditable(int row, int column){
            return false; 
@@ -54,9 +50,13 @@ public class ViewProducts extends javax.swing.JFrame implements Node {
         jScrollPane1 = new javax.swing.JScrollPane();
         ProductsTable = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
-        ProductsTable.setBackground(new java.awt.Color(204, 204, 204));
         ProductsTable.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         ProductsTable.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         ProductsTable.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -98,6 +98,10 @@ public class ViewProducts extends javax.swing.JFrame implements Node {
     private void ProductsTablePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_ProductsTablePropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_ProductsTablePropertyChange
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+       windowNavigation.setNavigation((JFrame)this.getParentNode(), this);
+    }//GEN-LAST:event_formWindowClosing
 
 
     /**

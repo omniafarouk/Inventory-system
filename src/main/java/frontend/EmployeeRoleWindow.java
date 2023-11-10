@@ -1,4 +1,3 @@
-
 package frontend;
 
 import backend.EmployeeRole;
@@ -14,7 +13,7 @@ public class EmployeeRoleWindow extends javax.swing.JFrame implements Node{
         
         initComponents();
         this.windowNavigation=windowNavigation;
-        this.parent=parent;
+        this.parent = parent;
         this.setTitle("Employee Role");
         employee= new EmployeeRole();
     }
@@ -30,7 +29,7 @@ public class EmployeeRoleWindow extends javax.swing.JFrame implements Node{
         ReturnProductButton = new javax.swing.JButton();
         LogoutButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         AddProductButton.setBackground(new java.awt.Color(0, 0, 0));
         AddProductButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -103,59 +102,59 @@ public class EmployeeRoleWindow extends javax.swing.JFrame implements Node{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 36, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(AddProductButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PurchaseProductButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                    .addComponent(ViewProductButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ViewPurchasedProductsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ReturnProductButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LogoutButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(LogoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ReturnProductButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ViewPurchasedProductsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PurchaseProductButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ViewProductButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AddProductButton, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(AddProductButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ViewProductButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PurchaseProductButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ViewPurchasedProductsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(ReturnProductButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(LogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addComponent(AddProductButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(ViewProductButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PurchaseProductButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ViewPurchasedProductsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ReturnProductButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductButtonActionPerformed
-            AddProductWindow addProduct= new AddProductWindow(this.windowNavigation,this.parent);
+            AddProductWindow addProduct= new AddProductWindow(this.windowNavigation, this, employee);
            this.windowNavigation.setNavigation(addProduct, this);
     }//GEN-LAST:event_AddProductButtonActionPerformed
 
     private void PurchaseProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PurchaseProductButtonActionPerformed
-         PurchaseProductWindow PurchaseProduct= new PurchaseProductWindow(this.windowNavigation,this.parent);
+         PurchaseProductWindow PurchaseProduct= new PurchaseProductWindow(this.windowNavigation, this, employee);
            this.windowNavigation.setNavigation(PurchaseProduct, this);
     }//GEN-LAST:event_PurchaseProductButtonActionPerformed
 
     private void ViewProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProductButtonActionPerformed
-         ViewProducts viewProductsWindow = new ViewProducts(windowNavigation,this,employee.getListOfProducts());
+         ViewProducts viewProductsWindow = new ViewProducts(windowNavigation, this, employee.getListOfProducts());
         windowNavigation.setNavigation(viewProductsWindow, this);
     }//GEN-LAST:event_ViewProductButtonActionPerformed
 
     private void ViewPurchasedProductsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewPurchasedProductsButtonActionPerformed
-        ViewPurchasedProducts viewPurchasedProductsWindow = new ViewPurchasedProducts(windowNavigation,this,employee.getListOfPurchasingOperations());
+        ViewPurchasedProducts viewPurchasedProductsWindow = new ViewPurchasedProducts(windowNavigation, this,employee.getListOfPurchasingOperations());
         windowNavigation.setNavigation(viewPurchasedProductsWindow, this);
     }//GEN-LAST:event_ViewPurchasedProductsButtonActionPerformed
 
     private void ReturnProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnProductButtonActionPerformed
-        ReturnProductWindow ReturnProduct= new ReturnProductWindow(this.windowNavigation,this.parent);
+        ReturnProductWindow ReturnProduct= new ReturnProductWindow(this.windowNavigation, this, employee);
            this.windowNavigation.setNavigation(ReturnProduct, this);
     }//GEN-LAST:event_ReturnProductButtonActionPerformed
 

@@ -1,4 +1,3 @@
-
 package frontend;
 
 import backend.EmployeeRole;
@@ -12,14 +11,14 @@ public class AddProductWindow extends javax.swing.JFrame implements Node {
 
     private Node parent;
     private Navigation windowNavigation;
-    EmployeeRole employee;
+    private EmployeeRole employee;
     
-    public AddProductWindow( Navigation windowNavigation , Node parent) {
+    public AddProductWindow( Navigation windowNavigation , Node parent, EmployeeRole employee) {
         initComponents();
-        this.parent=parent;
-        this.windowNavigation=windowNavigation;
+        this.parent = parent;
+        this.windowNavigation = windowNavigation;
         this.setTitle("Add Product");
-        employee=new EmployeeRole();
+        this.employee = employee;
         
     }
 
@@ -42,7 +41,12 @@ public class AddProductWindow extends javax.swing.JFrame implements Node {
         jTextFieldPrice = new javax.swing.JTextField();
         jTextFieldManufacturerName = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         AddButton.setBackground(new java.awt.Color(0, 0, 0));
         AddButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -57,43 +61,43 @@ public class AddProductWindow extends javax.swing.JFrame implements Node {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        PriceLabel.setBackground(new java.awt.Color(0, 255, 0));
-        PriceLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        PriceLabel.setBackground(new java.awt.Color(0, 255, 102));
+        PriceLabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         PriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PriceLabel.setText("Price");
         PriceLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         PriceLabel.setOpaque(true);
 
-        ProductNameLabel.setBackground(new java.awt.Color(0, 255, 0));
-        ProductNameLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        ProductNameLabel.setBackground(new java.awt.Color(0, 255, 102));
+        ProductNameLabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         ProductNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ProductNameLabel.setText("Product Name");
         ProductNameLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         ProductNameLabel.setOpaque(true);
 
-        ProductIDLabel.setBackground(new java.awt.Color(0, 255, 0));
-        ProductIDLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        ProductIDLabel.setBackground(new java.awt.Color(0, 255, 102));
+        ProductIDLabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         ProductIDLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ProductIDLabel.setText("Product ID");
         ProductIDLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         ProductIDLabel.setOpaque(true);
 
-        SupplierNameLabel.setBackground(new java.awt.Color(0, 255, 0));
-        SupplierNameLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        SupplierNameLabel.setBackground(new java.awt.Color(0, 255, 102));
+        SupplierNameLabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         SupplierNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SupplierNameLabel.setText("Supplier Name");
         SupplierNameLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         SupplierNameLabel.setOpaque(true);
 
-        QuantityLabel.setBackground(new java.awt.Color(0, 255, 0));
-        QuantityLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        QuantityLabel.setBackground(new java.awt.Color(0, 255, 102));
+        QuantityLabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         QuantityLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         QuantityLabel.setText("Quantity");
         QuantityLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         QuantityLabel.setOpaque(true);
 
-        ManufacturerNameLabel.setBackground(new java.awt.Color(0, 255, 0));
-        ManufacturerNameLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        ManufacturerNameLabel.setBackground(new java.awt.Color(0, 255, 102));
+        ManufacturerNameLabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         ManufacturerNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ManufacturerNameLabel.setText("Manufacturer Name");
         ManufacturerNameLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -258,6 +262,7 @@ public class AddProductWindow extends javax.swing.JFrame implements Node {
         {
             JPanel Empty =new JPanel();
             JOptionPane.showMessageDialog(Empty, " Some fields are empty ","ALert!", JOptionPane.ERROR_MESSAGE);
+            return;
         }
         else {
            Product[] products = employee.getListOfProducts();
@@ -271,22 +276,28 @@ public class AddProductWindow extends javax.swing.JFrame implements Node {
            }
         }
             // all validations are correct --> product will be added
-       employee.addProduct(ProductId, ProductName, ManufacturerName, SupplierName, Integer.parseInt(Quantity), Float.parseFloat(Price));
-            
+        employee.addProduct(ProductId, ProductName, ManufacturerName, SupplierName, Integer.parseInt(Quantity), Float.parseFloat(Price));
+        jTextFieldProductId.setText("");
+        jTextFieldProductName.setText("");
+        jTextFieldSupplierName.setText("");
+        jTextFieldManufacturerName.setText("");
+        jTextFieldQuantity.setText("");
+        jTextFieldPrice.setText("");
+        
         JPanel Successfull= new JPanel();
         JOptionPane.showMessageDialog(Successfull, "The product with id " +ProductId +" has been successfully added");
-        EmployeeRoleWindow EmployeeRoleWindow= new EmployeeRoleWindow(this.windowNavigation,this.parent);
-            
-        this.windowNavigation.setNavigation(EmployeeRoleWindow, this);
-    
         } 
-     catch (NumberFormatException e) {
+      catch (NumberFormatException e) {
             JPanel quantityNotInt= new JPanel();
-            JOptionPane.showMessageDialog(quantityNotInt,"You should enter a numeric value in quantity and price fields"," Warning!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(quantityNotInt,"You should enter a numeric value in fields whose names are \"Quantity\" and \"Price\" ","Warning!",JOptionPane.ERROR_MESSAGE);
 
         }
       
     }//GEN-LAST:event_AddButtonActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        windowNavigation.setNavigation((JFrame)this.getParentNode(), this);
+    }//GEN-LAST:event_formWindowClosing
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -316,7 +327,7 @@ public class AddProductWindow extends javax.swing.JFrame implements Node {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new AddProductWindow(null,null).setVisible(true);
+                new AddProductWindow(null,null,null).setVisible(true);
             }
         });
     }
