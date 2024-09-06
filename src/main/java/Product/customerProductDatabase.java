@@ -1,5 +1,6 @@
 
 package Product;
+import System.*;
 
 /*import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,90 +12,26 @@ import java.util.ArrayList;
 import java.time.*;
 import java.time.format.*;
 
-public class customerProductDatabase {
+public class customerProductDatabase extends Database<customerProduct>{
 
     private ArrayList<customerProduct> records;
     private String filename;
 
     public customerProductDatabase(String filename) {
+        super(filename);
         this.filename = filename;
         this.records = new ArrayList<> ();
+       super.setRecords(records);
     }
-    
-    public void readFromFile(){
-                
-         BufferedReader reader;
-        try {
-            reader = new BufferedReader(new FileReader(filename));
-            String line;
-            
-            while((line = reader.readLine())!=null)
-                {   System.out.println("new");
-                    System.out.println(line);
-                    records.add(createRecordFrom(line) );
-                    
-                }    
-                reader.close();
-        }catch (IOException ex) {
 
-                System.out.println("An error occurred!");
-        }
-    }
-    
+    @Override
     public customerProduct createRecordFrom(String line){
-        
         //System.out.println("Create record from method called!");
-        String[] lineData = line.split(",");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("DD-MMM-YYYY");
-        return new customerProduct( lineData[0], lineData[1], LocalDate.parse( lineData[2] , formatter) );
-        
+        String[] lineData = line.split(","); 
+        String dateString = lineData[2];
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
+        LocalDate date = LocalDate.parse(dateString, formatter);
+        System.out.println(date);
+        return new customerProduct( lineData[0], lineData[1], date);
     }
-    
-    public ArrayList< customerProduct > returnAllRecords(){
-        return records;
-    }
-   
-    public boolean contains (String key){
-        
-        return getRecord(key) != null;
-    }
-    
-    public customerProduct getRecord (String key){
-        
-        for(int i = 0 ; i < records.size() ; i++){
-            
-            customerProduct purschasedProduct = records.get(i);
-            if(purschasedProduct.getSearchKey().equals(key))
-            {    return purschasedProduct;  } 
-        }
-        return null;
-    }
-    
-    public void insertRecord (customerProduct record){
-        records.add(record);
-    }
-    
-    public void deleteRecord (String key){
-        
-        if(this.contains(key)){
-         
-            records.remove(getRecord(key));
-        }
-        else{
-            System.out.println("Can't delete the purchased product whose of= " + key);     
-        }
-    }
-    
-    public void saveToFile(){
-        try {      
-                BufferedWriter writer = new BufferedWriter (new FileWriter(filename));
-                for (customerProduct record: this.records) {
-                    writer.write(record.lineRepresentation() + "\n");
-            }
-                writer.close();
-          } catch (IOException ex) {    
-            System.out.println("An error occurred!");
-       }
-    }
-    
 }

@@ -11,4 +11,5 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>ManagementSystem.Lab_4</exec.mainClass>
     </properties>
+    <name>Backend using Generics</name>
 </project>

@@ -1,106 +1,93 @@
 
 package System;
  
-import Admin.EmployeeUser; 
-import Product.customerProduct; 
-import Product.Product; 
-import java.io.BufferedReader; 
+import java.io.BufferedReader;
 import java.io.BufferedWriter; 
-import java.io.FileReader; 
+import java.io.FileReader;
 import java.io.FileWriter; 
 import java.io.IOException; 
-import java.time.LocalDate; 
-import java.util.ArrayList; 
+import java.util.ArrayList;
  
-public class Database
+public abstract class Database<T extends Account>
 {
-    private String filename; 
-    private ArrayList records; 
-    private String role; 
-    public Database(String filename,String role){ 
+    private final String filename; 
+    private ArrayList<T> records;  
+    
+    public Database(String filename){ 
          
         this.filename = filename; 
-        this.role = role; 
     } 
      
-    public void setRecords(ArrayList records){ 
-        this.records = records; 
-    } 
-     
-    public void saveToFile(ArrayList records){ 
-          try {       
-                BufferedWriter writer = new BufferedWriter (new FileWriter(filename)); 
-                switch(role){ 
-                case "Admin" ->  { loopEmployeeThroughList(records, writer); }
-                case "Product" -> { loopThroughProductList(records,writer); }
-                case"Customer" ->  { loopThroughCustomerList(records,writer); }
-                } 
-                 
-                writer.close(); 
-          } catch (IOException ex) {     
-             
-              System.out.println("An error occurred!"); 
-            } 
-} 
- 
-    private void loopEmployeeThroughList(ArrayList<EmployeeUser> records, BufferedWriter writer) throws IOException { 
-             
-            for (EmployeeUser record : records) { 
-                        writer.write(record.lineRepresentation() + "\n"); 
-     } 
-    } 
-     
-    private void loopThroughProductList(ArrayList<Product> records, BufferedWriter writer) throws IOException { 
- 
-            for (Product record : records) { 
-                        writer.write(record.lineRepresentation() + "\n"); 
-    }} 
-    
-    private void loopThroughCustomerList(ArrayList<customerProduct> records, BufferedWriter writer) throws IOException { 
- 
-            for (customerProduct record : records) { 
-                        writer.write(record.lineRepresentation() + "\n"); 
-    } 
-} 
-    public void readFromFile(){ 
-        BufferedReader reader; 
-        try { 
+        public void readFromFile() {
+             BufferedReader reader; 
+        try {
             reader = new BufferedReader(new FileReader(filename)); 
             String line; 
              
             while((line = reader.readLine())!=null) 
                 {   
-                    System.out.println("new"); 
                     System.out.println(line); 
-                    switch(this.role){ 
-                    case "Admin" ->  {records.add( createEmployeeRecordFrom(line) ); }
-                    case "Product" -> {records.add(createProductRecordFrom(line)); }
-                    case"Customer" -> {records.add(createCustomerRecordFrom(line)); } 
-                    } 
-                }     
+                    records.add(this.createRecordFrom(line));
+                }
                 reader.close(); 
         }catch (IOException ex) {                                          
           
                 System.out.println("An error occurred!"); 
-        } 
-         
-} 
+        }    }
+    
+
      
-    public EmployeeUser createEmployeeRecordFrom(String line){ 
-      
-        //System.out.println("Create record from method called!"); 
-        String[] lineData = line.split(","); 
-        return new EmployeeUser (lineData[0], lineData[1], lineData[2], lineData[3], lineData[4]); 
+    public ArrayList<T> returnAllRecords()
+    {
+        return this.records;
+    }
+    
+    public void setRecords(ArrayList<T> records){ 
+        this.records = records; 
+    } 
+    
+    public void saveToFile(){ 
+          try {       
+                BufferedWriter writer = new BufferedWriter (new FileWriter(filename));
+              for (T record : records) {
+                  writer.write(record.lineRepresentation() + "\n");
+              }
+                
+                writer.close(); 
+          } catch (IOException ex) {     
+             
+              System.out.println("An error occurred!"); 
+            } 
+}    
+        
+    public T getRecord (String key){           
+        
+        for(int i = 0 ; i < records.size() ; i++){
+            
+            T account = records.get(i);
+            if(account.getSearchKey().equals(key))
+            {    return account;  } 
+        }
+        return null;
+    }
+    public boolean contains (String key){
+        
+        return getRecord(key) != null;
+    }
+
+    public void insertRecord (T record){
+        records.add(record);
+    }
+    
+    public void deleteRecord (String key){
+        
+        if(this.contains(key)){
          
-    } 
-    public Product createProductRecordFrom(String line){ 
-      
-        //System.out.println("Create record from method called!"); 
-        String[] lineData = line.split(","); 
-        return new Product(lineData[0], lineData[1], lineData[2], lineData[3], Integer.parseInt(lineData[4]), Float.parseFloat(lineData[5])); 
-    } 
-    public customerProduct createCustomerRecordFrom (String line){ 
-        String[] lineData = line.split(","); 
-        return new customerProduct (lineData[0], lineData[1], LocalDate.parse(lineData[2])); 
-    } 
+            records.remove(getRecord(key));
+        }
+        else{
+            System.out.println("Can't delete the purchased product whose of= " + key);     
+        }
+    }
+    public abstract T createRecordFrom(String line);
 }

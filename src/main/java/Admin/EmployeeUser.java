@@ -1,6 +1,7 @@
 package Admin;
+import System.*;
 
-public class EmployeeUser {  // can make instance variables final later
+public class EmployeeUser implements Account{  // can make instance variables final later
     
     private String employeeId;
     private String name;
@@ -16,10 +17,12 @@ public class EmployeeUser {  // can make instance variables final later
         this.phoneNumber = phoneNumber;
     }
     
+    @Override
     public String lineRepresentation(){  // can make a function for this if duplicated later 
         return (this.employeeId + "," + this.name + "," + this.email + "," + this.address + "," + this.phoneNumber);
     }
    
+    @Override
     public String getSearchKey(){
         return this.employeeId;
     }

@@ -1,7 +1,8 @@
 
 package Product;
+import System.Account;
 
-public class Product {
+public class Product implements Account {
     
     private String productName , productID , manufacturerName , supplierName;
     private int quantity;
@@ -28,16 +29,32 @@ public class Product {
       else
           this.quantity=quantity;
   }
+  
     public int getQuantity()
      {
       return this.quantity;
      }
+    
+    public void setQuantity(int quantity){
+         if(quantity < 0 ){
+          System.out.println("Product's quantity is invalid! It is set by default to zero.");
+          this.quantity = 0;
+      }
+      else{
+         this.quantity = quantity;}
+    }
+    public float getPrice()
+    {
+        return this.price;
+    }
+    @Override
      public String lineRepresentation(){  
         return (this.productID + "," + this.productName + "," + 
                 this.manufacturerName + "," + this.supplierName +
                 "," + this.quantity + "," +this.price);
     }
    
+    @Override
     public String getSearchKey(){
         return this.productID;
     }

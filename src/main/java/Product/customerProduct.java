@@ -1,18 +1,20 @@
 
 package Product;
 //import java.util.*;
+import System.Account;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 
-public class customerProduct {
+public class customerProduct implements Account  {
     
     private String customerSSN , productID;
     private LocalDate purchaseDate;
     
     public customerProduct(String customerSSN, String productID, LocalDate purchaseDate)
     {
-        this.customerSSN=customerSSN;  // lw elcustomer a4tra abl kda mi4tri4 tani , ezai??
+        this.customerSSN=customerSSN;  
         this.productID=productID;
-        this.purchaseDate=purchaseDate;  //any validations??
+        this.purchaseDate=purchaseDate;  
     }
     public String getCustomerSSN()
     {
@@ -26,12 +28,16 @@ public class customerProduct {
     {
         return this.purchaseDate;
     }
+    @Override
     public String lineRepresentation(){  
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String formattedDate = this.purchaseDate.format(outputFormatter);
+        return (this.customerSSN + "," + this.productID + "," +formattedDate );
+    }
+    @Override
+    public String getSearchKey(){          //make sure
         return (this.customerSSN + "," + this.productID + "," + 
                 this.purchaseDate );
-    }
-    public String getSearchKey(){          //make sure
-        return this.productID;
     }
 }
     
