@@ -1,6 +1,8 @@
 LPT-001,MacBook Pro 16-inch,Apple,BestBuy,0,5000.0
 SMT-002,Samsung Galaxy S22,Samsung,Amazon,3,1200.0
-GMC-003,PlayStation 5,Sony,GameStop,3,500.0
+GMC-003,PlayStation 5,Sony,GameStop,1,500.0
 SPK-004,Google Nest Audio,Google,Walmart,0,200.0
 WTCH-005,Fitbit Versa 3,Fitbit,Target,1,150.0
 newProduct,newProductName,nn,mm,6,300.0
+1,aa,bb,cc,10,10.5
+2,aa,bb,cc,0,10.0
