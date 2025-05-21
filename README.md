@@ -37,3 +37,6 @@ Workflow Overview
   * To run the master/main branch using frontend/GUI --> run "InventorySystem.java" class which is the first window of the gui that navigates to the rest of the windows according to access control
   
   * To run generic-backend --> run form "ManagementSystem" package either classes "TestClass,java" which runs all possible tests for the project , or , "Main.java" which is a custom main/test to call the projects classes (the class calls the test class to run this class always in general).
+  
+  * for the credentials to match and give access to the database , the employees.txt must be modified
+  * also products.txt and customerProducts.txt are the database representation of the backend logs
