@@ -1,4 +1,4 @@
-This Inventory Management System is a backend application designed to manage products, user accounts, and role-based access control. 
+This Inventory Management System is a fullstack application designed to manage products, user accounts, and role-based access control. 
 It is structured to support employees, admins, and customers with distinct functionalities.
 
 Key Components:
